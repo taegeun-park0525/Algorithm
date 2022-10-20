@@ -75,7 +75,7 @@ public class UserDao { //Dao (Data access object)
         UserDao userDao = new UserDao();
         userDao.add(new User("15", "won", "123456"));
 
-        //userDao.deleteAll();
+        //  userDao.deleteAll();
         // System.out.println(user.getName());
     }
 }
