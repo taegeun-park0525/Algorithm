@@ -1,5 +1,7 @@
 package com.likelion;
 
+import java.util.EmptyStackException;
+
 public class Stack01 {
     private int[] arr = new int[10000];
     private int pointer = 0; //비어있는 상태
@@ -19,9 +21,18 @@ public class Stack01 {
     }
 
     public int pop() {
+        if(this.isEmpty()) {
+            throw new EmptyStackException();
+        }
+
         //push 10 push 20 point 2
         int value = this.arr[this.pointer-1];
         this.pointer--;
         return value;
+    }
+
+    public boolean isEmpty() {
+        boolean isEmpty = this.pointer == 0;
+        return isEmpty;
     }
 }
