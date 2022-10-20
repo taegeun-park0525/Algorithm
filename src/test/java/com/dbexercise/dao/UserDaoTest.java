@@ -10,6 +10,8 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.sql.SQLException;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = UserDaoFactory.class)
@@ -21,12 +23,15 @@ class UserDaoTest {
     @Test
     void addAndSelect() throws SQLException, ClassNotFoundException {
         UserDao userDao = context.getBean("localUserDao",UserDao.class);
-        String id = "11";
+        userDao.deleteAll();
+        assertEquals(0, userDao.getCount());
 
+        String id = "11";
         userDao.add(new User(id,"Tae","12153"));
+        assertEquals(1, userDao.getCount());
 
         User user = userDao.select(id);
-        Assertions.assertEquals("Tae", user.getName());
+        assertEquals("Tae", user.getName());
     }
 
 
