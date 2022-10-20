@@ -20,12 +20,14 @@ class UserDaoTest {
 
     @Test
     void addAndSelect() throws SQLException, ClassNotFoundException {
-        UserDao userDao = (UserDao) context.getBean("localUserDao");
-        String id = "9";
+        UserDao userDao = context.getBean("localUserDao",UserDao.class);
+        String id = "11";
 
         userDao.add(new User(id,"Tae","12153"));
 
         User user = userDao.select(id);
         Assertions.assertEquals("Tae", user.getName());
     }
+
+
 }

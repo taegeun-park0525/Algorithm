@@ -12,5 +12,4 @@ public class UserDaoFactory {
         return userDao;
     }
 
-
 }
